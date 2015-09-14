@@ -1,0 +1,29 @@
+public class Fibonacci {
+    public static int Fibonacci(int n) {
+        if (n == 0) return 0;
+        if (n == 1 || n == 2) return 1;
+        int[] fib = new int[n+1];
+        fib[1] = 1;
+        fib[2] = 1;
+        for (int i = 3; i < fib.length; i++) {
+            fib[i] = fib[i-1] + fib[i-2];
+        }
+        return fib[n];
+    }
+    
+    public static void main(String[] args) {
+        String error = "Usage: Fibonacci 'number'";
+        if (args.length == 0 || args.length > 1) {
+            System.out.println(error);
+            return;
+        }
+        int arg = 0;
+        try {
+            arg = Integer.parseInt(args[0]);
+        } catch (NumberFormatException e) {
+            System.out.println(error);
+            return;
+        }
+        System.out.println(Fibonacci(arg));
+    }
+}
